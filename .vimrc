@@ -68,6 +68,8 @@ else
     set t_Co=256
 endif
 
+" Changing some default clangd configurations as per documentation
+
 " Generic GVim settings
 if has("gui_running")
     " disable all this GUIs nonesense to make it less distracting
@@ -89,6 +91,13 @@ set formatprg=par-format\ -w78
 
 " enable titlestring to make vim-autoswap working
 set title titlestring=
+
+" set syntax colouring for xml type files
+autocmd BufNewFile,BufRead *.launch set syntax=xml
+autocmd BufNewFile,BufRead *.urdf set syntax=xml
+autocmd BufNewFile,BufRead *.xacro syntax=xml
+autocmd BufNewFile,BufRead *.sdf  set syntax=xml
+autocmd BufNewFile,BufRead *.world  set syntax=xml
 
 " disable clang_complete
 "let g:clang_complete_loaded = 1
@@ -127,11 +136,12 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'asenac/vim-airline-loclist'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'petRUShka/vim-opencl'
 "Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'gergap/ShowMarks'
 Plugin 'godlygeek/tabular'
-Plugin 'Townk/vim-autoclose'
+"Plugin 'Townk/vim-autoclose' //This is a fucked plugin
 Plugin 'vimwiki/vimwiki'
 Plugin 'vim-scripts/calendar.vim--Matsumoto'
 Plugin 'scrooloose/nerdtree'
@@ -148,8 +158,11 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'gergap/refactor'
 Plugin 'kien/ctrlp.vim'
 Plugin 'SidOfc/mkdx'
+"Plugin 'taketwo/vim-ros'
 Plugin 'dhruvasagar/vim-table-mode'
 call vundle#end()
+
+au! BufRead,BufNewFile *.cl set filetype=opencl
 
 let g:PaperColor_Theme_Options = {
   \   'theme': {
@@ -284,14 +297,14 @@ set noshowmode
 inoremap <expr>  <C-K>   BDG_GetDigraph()
 
 "=====[ Make arrow keys move visual blocks around ]======================
-runtime plugin/dragvisuals.vim
-
-vmap  <expr>  <LEFT>   DVB_Drag('left')
-vmap  <expr>  <RIGHT>  DVB_Drag('right')
-vmap  <expr>  <DOWN>   DVB_Drag('down')
-vmap  <expr>  <UP>     DVB_Drag('up')
-vmap  <expr>  D        DVB_Duplicate()
-vmap  <expr>  <C-D>    DVB_Duplicate()
+"runtime plugin/dragvisuals.vim
+"
+"vmap  <expr>  <LEFT>   DVB_Drag('left')
+"vmap  <expr>  <RIGHT>  DVB_Drag('right')
+"vmap  <expr>  <DOWN>   DVB_Drag('down')
+"vmap  <expr>  <UP>     DVB_Drag('up')
+"vmap  <expr>  D        DVB_Duplicate()
+"vmap  <expr>  <C-D>    DVB_Duplicate()
 
 " Remove any introduced trailing whitespace after moving...
 let g:DVB_TrimWS = 1
@@ -355,13 +368,13 @@ endfunction
 " For moving the cursor we use hjkl in Vim, so the cursor keys can be
 " used for special actions which are used more rarely than hjkl.
 " previous buffer
-nmap <Left>     :bp<cr>
+nmap h     :bp<cr>
 " next buffer
-nmap <Right>    :bn<cr>
+nmap l    :bn<cr>
 " previous spelling error
-nmap <Up>       :[s<cr>
+"nmap <Up>       :[s<cr>
 " next spelling error
-nmap <Down>     :]s<cr>
+"nmap <Down>     :]s<cr>
 " Vim: M-Up/Down to navigate to prev/next compile error
 "      M-Left/Right to move between tabs
 " VimDiff: M-Up/Down to navigate to prev/next change
@@ -408,10 +421,15 @@ let g:ycm_auto_trigger = 1
 let g:ycm_confirm_extra_conf = 0
 " always populate location list
 let g:ycm_always_populate_location_list = 1
+
+let g:ycm_semantic_triggers = {
+\   'roslaunch' : ['="', '$(', '/'],
+\   'rosmsg,rossrv,rosaction' : ['re!^', '/'],
+\ }
 " debug output
 "let g:ycm_server_keep_logfiles = 1
-"let g:ycm_server_log_level = 'debug'
-"let g:ycm_server_use_vim_stdout = 1
+let g:ycm_server_log_level = 'debug'
+let g:ycm_server_use_vim_stdout = 1
 function! g:UltiSnips_Complete()
     call UltiSnips#ExpandSnippet()
     if g:ulti_expand_res == 0
@@ -439,6 +457,8 @@ augroup mycm
     au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
     au BufEnter * exec "inoremap <silent> " . g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
 augroup END
+" ++++++++++++++++Vim ROS++++++++++++++++++++++++++++++++++++++++
+"let g:ros_build_system = "catkin-tools"
 
 "====[ CompleteParam plugin ]============================================
 inoremap <silent><expr> ( complete_parameter#pre_complete("()")
@@ -471,12 +491,12 @@ let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
 "====[ superTab plugin ]=================================================
 " uncomment the next line to disable superTab
-"let loaded_supertab = 1
-"set completeopt=menu,longest
-"let g:SuperTabDefaultCompletionType = 'context'
-"let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-"let g:SuperTabLongestHighlight=1
-"let g:SuperTabLongestEnhanced=1
+let loaded_supertab = 1
+set completeopt=menu,longest
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+let g:SuperTabLongestHighlight=1
+let g:SuperTabLongestEnhanced=1
 
 "====[ Taglist plugin ]==================================================
 let Tlist_WinWidth = 40
@@ -491,7 +511,7 @@ let Tlist_Compact_Format = 1
 let g:tagbar_autoshowtag = 1
 let g:tagbar_autopreview = 0
 let g:tagbar_silent = 0
-autocmd VimEnter * nested :call tagbar#autoopen(1)
+"autocmd VimEnter * nested :call tagbar#autoopen(1)
 
 "====[ airline ]=========================================================
 " use powerline fonts to show beautiful symbols
@@ -594,21 +614,23 @@ let g:DoxygenToolkit_interCommentTag = "* "
 " unindent with Shift-Tab
 imap <S-Tab> <C-o><<
 " use F2 for saving
+nnoremap <S-F2> :wa<cr>
 nnoremap <F2> :w<cr>
 inoremap <F2> <esc>:w<cr>i
 " map F3 and SHIFT-F3 to toggle spell checking
-nmap <F3> :setlocal spell spelllang=de,en<CR>:syntax spell toplevel<CR>
-imap <F3> <ESC>:setlocal spell spelllang=en,de<CR>i:syntax spell toplevel<CR>
+nmap <F3> :YcmForceCompileAndDiagnostics<CR>
+imap <F3> <ESC>:YcmForceCompileAndDiagnostics<CR>i
 nmap <S-F3> :setlocal nospell<CR>
 imap <S-F3> <ESC>:setlocal nospell<CR>i
 " switch between header/source with F4 in C/C++ using a.vim
-nmap <F4> :A<CR>
+nmap <F4> :YcmCompleter GoTo<CR>
 imap <F4> <ESC>:A<CR>i
 " currently S-F4 does not work in KDE konsole. Don't know why.
 nmap <S-F4> :AV<CR>
 imap <S-F4> <ESC>:AV<CR>i
 " recreate tags file with F5
-map <F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+"map <F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <F5> :YcmForceCompileAndDiagnostics
 " create doxygen comment
 map <F6> :Dox<CR>
 function! Build()
@@ -659,6 +681,8 @@ nnoremap <leader>t :TagbarToggle<cr>
 
 "====[ NERDTree plugin       ]===========================================
 nnoremap <leader>n :NERDTreeToggle<cr>
+autocmd vimenter * NERDTree
+
 
 "====[ indentLines plugin    ]===========================================
 let g:indentLine_enabled = 0
@@ -882,11 +906,12 @@ let g:tex_flavor='latex'
 set grepprg=grep\ -nH\ $*
 
 let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_server_python_interpreter = '/usr/bin/python3'
 augroup python_files
     autocmd!
-    autocmd FileType python setlocal noexpandtab
-    autocmd FileType python set tabstop=8
-    autocmd FileType python set shiftwidth=8
+    autocmd FileType python setlocal expandtab
+    autocmd FileType python set tabstop=4
+    autocmd FileType python set shiftwidth=4
     autocmd FileType python nnoremap <buffer> <F5> :!python3 %<CR>
 augroup END
 
@@ -1029,6 +1054,8 @@ let g:clang_include_fixer_maximum_suggested_headers = 3
 let g:clang_include_fixer_increment_num = 5
 let g:clang_include_fixer_jump_to_include = 0
 let g:clang_include_fixer_query_mode = 0
+" let g:ycm_clangd_uses_ycmd_caching=0
+" let g:ycm_clangd_binary_path = exepath("clangd")
 noremap <leader>cf :py3f /usr/lib/llvm-3.9/share/clang/clang-include-fixer.py<cr>
 
 " setup
