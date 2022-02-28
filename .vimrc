@@ -135,6 +135,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'asenac/vim-airline-loclist'
+Plugin 'rhysd/vim-clang-format'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'petRUShka/vim-opencl'
 "Plugin 'vim-scripts/taglist.vim'
@@ -173,6 +174,9 @@ let g:PaperColor_Theme_Options = {
   \     }
   \   }
   \ }
+
+" configure clang-format
+let g:clang_format#code_style="google"
 
 " configure colorscheme: autodetected correct colorscheme depending on env
 " variable that is set in KDE Konsole Profile
