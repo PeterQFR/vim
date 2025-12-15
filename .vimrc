@@ -146,7 +146,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'vimwiki/vimwiki'
 Plugin 'vim-scripts/calendar.vim--Matsumoto'
 Plugin 'scrooloose/nerdtree'
-Plugin 'SirVer/ultisnips'
+"Plugin 'SirVer/ultisnips'
 Plugin 'gergap/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tenfyzhong/CompleteParameter.vim'
@@ -434,33 +434,33 @@ let g:ycm_semantic_triggers = {
 "let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
 let g:ycm_server_use_vim_stdout = 1
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
-function! g:UltiSnips_Reverse()
-  call UltiSnips#JumpBackwards()
-  if g:ulti_jump_backwards_res == 0
-    return "\<C-P>"
-  endif
+"function! g:UltiSnips_Complete()
+"    call UltiSnips#ExpandSnippet()
+"    if g:ulti_expand_res == 0
+"        if pumvisible()
+"            return "\<C-n>"
+"        else
+"            call UltiSnips#JumpForwards()
+"            if g:ulti_jump_forwards_res == 0
+"               return "\<TAB>"
+"            endif
+"        endif
+"    endif
+"    return ""
+"endfunction
+"function! g:UltiSnips_Reverse()
+"  call UltiSnips#JumpBackwards()
+"  if g:ulti_jump_backwards_res == 0
+"    return "\<C-P>"
+"  endif
 
-  return ""
-endfunction
-augroup mycm
-    au!
-    au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-    au BufEnter * exec "inoremap <silent> " . g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
-augroup END
+"  return ""
+"endfunction
+"augroup mycm
+"    au!
+"    au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+"    au BufEnter * exec "inoremap <silent> " . g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
+"augroup END
 " ++++++++++++++++Vim ROS++++++++++++++++++++++++++++++++++++++++
 "let g:ros_build_system = "catkin-tools"
 
@@ -470,7 +470,7 @@ smap <leader><tab> <Plug>(complete_parameter#goto_next_parameter)
 imap <leader><tab> <Plug>(complete_parameter#goto_next_parameter)
 smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
 imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
-let g:complete_parameter_use_ultisnips_mapping = 1
+"let g:complete_parameter_use_ultisnips_mapping = 1
 
 "====[ ShowMarks plugin ]================================================
 " reduce shows marks to I need. The default is
@@ -486,12 +486,12 @@ let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 let g:AutoCloseExpandSpace = 0
 
 "====[ UltiSnips plugin ]================================================
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsEditSplit="horizontal"
-let g:UltiSnipsListSnippets="<c-e>"
-let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:"UltiSnipsJumpBackwardTrigger="<s-tab>"
+"let g:UltiSnipsEditSplit="horizontal"
+"let g:UltiSnipsListSnippets="<c-e>"
+"let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
 "====[ superTab plugin ]=================================================
 " uncomment the next line to disable superTab
