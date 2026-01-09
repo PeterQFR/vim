@@ -6,9 +6,9 @@ PLUGINS="https://github.com/gergap/wombat256.git"
 # gergap - My new colorscheme created from scratch
 PLUGINS="$PLUGINS https://github.com/gergap/gergap.git"
 # vim-touchpad - My new touchpad disabling plugin
-PLUGINS="$PLUGINS git://github.com/gergap/touchpad.git"
+PLUGINS="$PLUGINS https://github.com/gergap/touchpad.git"
 # vim-kanban - My kanban and pomodoro plugin
-PLUGINS="$PLUGINS git://github.com/gergap/vim-kanban.git"
+PLUGINS="$PLUGINS https://github.com/gergap/vim-kanban.git"
 # vim-gitgutter
 PLUGINS="$PLUGINS https://github.com/airblade/vim-gitgutter.git"
 # indentation Lines
@@ -19,17 +19,17 @@ PLUGINS="$PLUGINS https://github.com/will133/vim-dirdiff.git"
 PLUGINS="$PLUGINS https://github.com/tommcdo/vim-exchange.git"
 # StartTimPope: Tim Pope is a Vim Hero: let's use some of his awsome plugins
 # vim-fugitive - Awesome git plugin
-PLUGINS="$PLUGINS git://github.com/tpope/vim-fugitive.git"
+PLUGINS="$PLUGINS https://github.com/tpope/vim-fugitive.git"
 # vim-commentary
-PLUGINS="$PLUGINS git://github.com/tpope/vim-commentary.git"
+PLUGINS="$PLUGINS https://github.com/tpope/vim-commentary.git"
 # vim-speeddating
-PLUGINS="$PLUGINS git://github.com/tpope/vim-speeddating.git"
+PLUGINS="$PLUGINS https://github.com/tpope/vim-speeddating.git"
 # vim-surround
-PLUGINS="$PLUGINS git://github.com/tpope/vim-surround.git"
+PLUGINS="$PLUGINS https://github.com/tpope/vim-surround.git"
 # vim-repeat
-PLUGINS="$PLUGINS git://github.com/tpope/vim-repeat.git"
+PLUGINS="$PLUGINS https://github.com/tpope/vim-repeat.git"
 # vim-abolish
-PLUGINS="$PLUGINS git://github.com/tpope/vim-abolish.git"
+PLUGINS="$PLUGINS https://github.com/tpope/vim-abolish.git"
 # EndTimPope
 # vim-airline - lightweight powerline alternative (pure vim, no python)
 PLUGINS="$PLUGINS https://github.com/bling/vim-airline.git"
@@ -52,7 +52,7 @@ PLUGINS="$PLUGINS https://github.com/Valloric/YouCompleteMe.git"
 #PLUGINS="$PLUGINS https://github.com/msanders/snipmate.vim"
 #PLUGINS="$PLUGINS https://github.com/ervandew/snipmate.vim"
 PLUGINS="$PLUGINS https://github.com/vim-scripts/UltiSnips"
-PLUGINS="$PLUGINS git://github.com/gergap/vim-snippets"
+PLUGINS="$PLUGINS https://github.com/gergap/vim-snippets"
 # superTab
 #PLUGINS="$PLUGINS https://github.com/ervandew/supertab"
 # multiple cursors - See https://github.com/terryma/vim-multiple-cursors
@@ -60,19 +60,19 @@ PLUGINS="$PLUGINS https://github.com/terryma/vim-multiple-cursors"
 # tabularize plugin
 PLUGINS="$PLUGINS https://github.com/godlygeek/tabular.git"
 # vim-exchange
-PLUGINS="$PLUGINS git://github.com/tommcdo/vim-exchange.git"
+PLUGINS="$PLUGINS https://github.com/tommcdo/vim-exchange.git"
 # vim-taglist
 PLUGINS="$PLUGINS https://github.com/vim-scripts/taglist.vim"
 # vim-textobj-function
 # this provides textobjects for functions and supports C, JAVA, and Vim script
 # Note: vim-textobj-function depends on vim-textobj-user
-PLUGINS="$PLUGINS git://github.com/kana/vim-textobj-user"
-PLUGINS="$PLUGINS git://github.com/kana/vim-textobj-function"
-PLUGINS="$PLUGINS git://github.com/kana/vim-textobj-line.git"
+PLUGINS="$PLUGINS https://github.com/kana/vim-textobj-user"
+PLUGINS="$PLUGINS https://github.com/kana/vim-textobj-function"
+PLUGINS="$PLUGINS https://github.com/kana/vim-textobj-line.git"
 # gergap's vim-konsole plugin
-PLUGINS="$PLUGINS git://github.com/gioele/vim-autoswap"
-PLUGINS="$PLUGINS git://github.com/gergap/vim-konsole"
-PLUGINS="$PLUGINS git://github.com/gergap/vim-latexview"
+PLUGINS="$PLUGINS https://github.com/gioele/vim-autoswap"
+PLUGINS="$PLUGINS https://github.com/gergap/vim-konsole"
+PLUGINS="$PLUGINS https://github.com/gergap/vim-latexview"
 # solarized colorscheme
 PLUGINS="$PLUGINS https://github.com/altercation/vim-colors-solarized"
 # vim wiki plugin
