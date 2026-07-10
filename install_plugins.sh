@@ -106,6 +106,7 @@ done
 # setup YouCompletMe
 function SetupYCM() {
     cd YouCompleteMe
+    git checkout 05f688cbab7227ccb5eec1483df90786e69797cb
     git submodule update --init --recursive
     ./install.sh --clang-completer
     cd -
