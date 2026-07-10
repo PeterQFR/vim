@@ -111,12 +111,13 @@ function SetupYCM() {
     cd -
 }
 
-while true; do
-    read -p "Do you want to setup YCM now (y/n)?" yn
-    case $yn in
-        [Yy]* ) SetupYCM; break;;
-        [Nn]* ) exit;;
-        * ) echo "Please answer yes or no.";;
-    esac
-done
+SetupYCM
+#while true; do
+#    read -p "Do you want to setup YCM now (y/n)?" yn
+ #   case $yn in
+ #       [Yy]* ) SetupYCM; break;;
+ #       [Nn]* ) exit;;
+ #       * ) echo "Please answer yes or no.";;
+ #   esac
+#done
 
